@@ -1,0 +1,34 @@
+from capability import driver
+import random
+#添加头像
+driver.find_element_by_id('com.tal.kaoyan:id/login_register_text').click()
+driver.find_element_by_id('com.tal.kaoyan:id/activity_register_userheader').click()
+imageList=driver.find_elements_by_id('com.tal.kaoyan:id/item_image')
+imageList[8].click()
+driver.find_element_by_id('com.tal.kaoyan:id/save').click()
+
+#注册信息填写
+randomNumber=random.randint(1000,9999)
+
+userName='kaoyan' + 'abao' + str(randomNumber)
+print('username: %s' %userName)
+driver.find_element_by_id('com.tal.kaoyan:id/activity_register_username_edittext').send_keys(userName)
+passWord='zxc' + str(randomNumber)
+print('password: %s' %passWord)
+driver.find_element_by_id('com.tal.kaoyan:id/activity_register_password_edittext').send_keys(passWord)
+eMail='kaoyan' + 'abao' + str(randomNumber) + '@163.com'
+print('email: %s' %eMail)
+driver.find_element_by_id('com.tal.kaoyan:id/activity_register_email_edittext').send_keys(eMail)
+driver.find_element_by_id('com.tal.kaoyan:id/activity_register_register_btn').click()
+#院校选择
+driver.find_element_by_id('com.tal.kaoyan:id/perfectinfomation_edit_school_name').click()
+driver.find_elements_by_id('com.tal.kaoyan:id/more_forum_title')[1].click()
+driver.find_elements_by_id('com.tal.kaoyan:id/university_search_item_name')[0].click()
+#专业选择
+driver.find_element_by_id('com.tal.kaoyan:id/activity_perfectinfomation_major').click()
+driver.find_elements_by_id('com.tal.kaoyan:id/major_subject_title')[7].click()
+driver.find_elements_by_id('com.tal.kaoyan:id/major_group_title')[8].click()
+driver.find_elements_by_id('com.tal.kaoyan:id/major_search_item_name')[0].click()
+
+driver.find_element_by_id('com.tal.kaoyan:id/activity_perfectinfomation_goBtn').click()
+
