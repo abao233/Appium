@@ -1,0 +1,6 @@
+from capability import driver
+
+driver.find_element_by_id('com.tal.kaoyan:id/login_register_text').click()
+
+father_resource=driver.find_element_by_id('com.tal.kaoyan:id/activity_register_parentlayout')
+father_resource.find_element_by_class_name('android.widget.ImageView').click()
