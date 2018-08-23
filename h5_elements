@@ -1,0 +1,46 @@
+from appium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+
+desired_caps={}
+desired_caps['platformName'] = 'Android'
+
+#真机
+desired_caps['platformVersion'] = '6.0'
+desired_caps['deviceName'] = 'lex620'
+desired_caps['uuid'] = 'LE67A06280012052'
+
+# desired_caps['noReset'] = 'True'
+desired_caps['unicodeKeyboard'] = True
+desired_caps['resetKeyboard'] = True
+
+desired_caps['app'] = r'C:\Users\Administrator\Desktop\dr.fone3.2.0.apk'
+desired_caps['appPackage'] = 'com.wondershare.drfone'
+desired_caps['appActivity'] = 'com.wondershare.drfone.ui.activity.WelcomeActivity'
+#launch
+driver=webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
+driver.implicitly_wait(5)
+
+print('Click BackupBtn')
+driver.find_element_by_id('com.wondershare.drfone:id/btnBackup').click()
+
+WebDriverWait(driver,15).until(lambda x:x.find_element_by_id('com.wondershare.drfone:id/btnRecoverData'))
+print('Click NextBtn')
+driver.find_element_by_id('com.wondershare.drfone:id/btnRecoverData').click()
+
+WebDriverWait(driver,8).until(lambda x:x.find_element_by_class_name('android.webkit.WebView'))
+contexts=driver.contexts
+print(contexts)
+
+print('switch H5 context')
+driver.switch_to.context('WEBVIEW_com.wondershare.drfone')
+
+print('Click Edit')
+driver.find_element_by_id('email').send_keys('zxc123aabboo@163.com')
+print('Click Submit')
+driver.find_element_by_class_name('btn_send').click()
+
+print('switch context to app')
+driver.switch_to.context('NATIVE_APP')
+driver.find_element_by_class_name('android.widget.ImageButton').click()
+
