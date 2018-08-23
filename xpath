@@ -1,0 +1,9 @@
+from capability import driver
+
+driver.find_element_by_xpath('//android.widget.EditText[@text="请输入用户名"]').clear()
+driver.find_element_by_xpath('//android.widget.EditText[@text="请输入用户名"]').send_keys('阿宝同学')
+
+driver.find_element_by_xpath('//*[@class="android.widget.EditText" and @index="3"]').send_keys('zxc123456')
+
+driver.find_element_by_xpath('//android.widget.Button').click()
+# driver.find_element_by_xpath('//*[@class="android.widget.Button"]').click()
