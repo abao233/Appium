@@ -1,0 +1,10 @@
+from capability import driver
+
+driver.find_element_by_id('com.tal.kaoyan:id/login_email_edittext').clear()
+driver.find_element_by_id('com.tal.kaoyan:id/login_email_edittext').send_keys('555')
+
+driver.find_element_by_id('com.tal.kaoyan:id/login_password_edittext').send_keys('zxc123456')
+driver.find_element_by_id('com.tal.kaoyan:id/login_login_btn').click()
+
+driver.save_screenshot('login.png')
+driver.get_screenshot_as_file('./venv/login.png')
